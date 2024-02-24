@@ -32,9 +32,25 @@ namespace Binary_tree_attempt
             // ho fatto un casino, sarebbe molto più facile se l'albero fosse bidirezionale
             // eh lo so (scritto 2 settimane dopo)
         }
-        public IntNode? DFSSearch(int val, int flag, Func<IntNode,int> CustomMethod)
+
+        public override string ToString()
+        {
+            return valore.ToString();
+        }
+
+        public void Stampa(IntNode nodo)
+        {
+            Console.WriteLine(nodo.ToString());
+        }
+
+        
+
+            public IntNode? DFSSearch(int? val, int flag, Action<IntNode> CustomMethod)
         {
             IntNode?[] INodes =  {null,null,null };
+
+            
+
             switch (flag)
             // prima volta in tutta la mia vita che uso gli switch (li odio, preferisco fare 26 if-statement consecutivi)
             {
@@ -58,22 +74,25 @@ namespace Binary_tree_attempt
                     INodes[1] = this;
                     INodes[2] = Maggiore;
                     break;
-
+                default: 
+                    throw new Exception("Inserito flag Incompatibile");
             }
-
+            IntNode returnNode = null;
             foreach (var node in INodes)
             {
+
                 if (node == this)
                 {
                     CustomMethod(this);
-                    // under construction
-                    
+                    if (val == valore) return this;
+
+                } else if (node != null)
+                {
+                    returnNode = node.DFSSearch(val,flag, CustomMethod);
+                    if (returnNode != null) return returnNode;
                 }
+
             }
-
-
-
-
             return null;
             
         }

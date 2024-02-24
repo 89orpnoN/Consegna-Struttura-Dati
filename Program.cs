@@ -11,6 +11,9 @@ albero.Add(30);
 albero.Add(21);
 albero.Add(20);
 
+
+albero.DFSVisits(1);
+
 albero.Remove(27);
 albero.Remove(22);
 albero.Remove(22);

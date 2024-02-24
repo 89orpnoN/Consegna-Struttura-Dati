@@ -27,6 +27,29 @@ namespace Binary_tree_attempt
             links++;
             return nodo.valore;
         }
+        public IntNode? BreadSearch(int? val, Action<IntNode> CustomMethod)
+        {
+            
+            IntNode[] stack = { primo};
+            IntNode[] queue = { primo };
+            
+            foreach (IntNode nodo in queue)
+            {
+                // TODO: gestione casistica figli null
+                queue.Append(nodo.Minore);
+                queue.Append(nodo.Maggiore);
+            }
+            
+
+
+
+            return this;
+        }
+
+        public void DFSVisits(int flag)
+        {
+            primo.DFSSearch(null, flag, primo.Stampa);
+        }
 
         public Tree(int val)
         {
