@@ -45,7 +45,7 @@ namespace Binary_tree_attempt
 
         
 
-            public IntNode? DFSSearch(int? val, int flag, Action<IntNode> CustomMethod)
+        public IntNode? DFSSearch(int? val, int flag, Action<IntNode> CustomMethod)
         {
             IntNode?[] INodes =  {null,null,null };
 

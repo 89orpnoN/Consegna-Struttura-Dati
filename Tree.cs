@@ -27,23 +27,44 @@ namespace Binary_tree_attempt
             links++;
             return nodo.valore;
         }
-        public IntNode? BreadSearch(int? val, Action<IntNode> CustomMethod)
+        public IntNode? BreadSearch(int? val, Action<IntNode>? CustomMethod = null)
         {
+
+            List<IntNode> buffer;
+
+            List<IntNode> queue = new List<IntNode>();
+            queue.Add(primo);
+
             
-            IntNode[] stack = { primo};
-            IntNode[] queue = { primo };
             
-            foreach (IntNode nodo in queue)
+            foreach (IntNode? nodo in queue)
             {
-                // TODO: gestione casistica figli null
-                queue.Append(nodo.Minore);
-                queue.Append(nodo.Maggiore);
+                // TODO: prima del ciclo viene riempito buffer, while true che riempe queue, i vecchi nodi vengono rimossi da queue
+                if (nodo != null)
+                {
+                    if (CustomMethod != null)
+                    {
+                        CustomMethod(nodo);
+                    }
+                    
+                    if (nodo.valore == val && val != null)
+                    {
+                        return nodo;
+                    }
+                    
+                    queue.Add(nodo.Minore);
+                    queue.Add(nodo.Maggiore);
+                }
+                
             }
-            
 
 
 
-            return this;
+            return null;
+        }
+        public void BreadVisits()
+        {
+            BreadSearch(null, primo.Stampa);
         }
 
         public void DFSVisits(int flag)

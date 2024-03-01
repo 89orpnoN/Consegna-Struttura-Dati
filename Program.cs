@@ -12,7 +12,9 @@ albero.Add(21);
 albero.Add(20);
 
 
-albero.DFSVisits(1);
+//albero.DFSVisits(1);
+
+albero.BreadVisits();
 
 albero.Remove(27);
 albero.Remove(22);
